@@ -1,0 +1,45 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "description": "Dashboard Grafana - Suivi de la consommation énergétique de l'IUT d'Haguenau",
+    "require": {
+        "php": ">=8.1",
+        "symfony/console": "^7.0",
+        "symfony/dotenv": "^7.0",
+        "symfony/flex": "^2.4",
+        "symfony/framework-bundle": "^7.0",
+        "symfony/runtime": "^7.0"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.51"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    }
+}
