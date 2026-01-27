@@ -1,58 +1,152 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace Étudiant{% endblock %}
+{% block title %}Tableau de Bord Énergétique{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{% endblock %}
 
 {% block body %}
-    <style>
-        .dashboard-shell { min-height: 100vh; background: #0f172a; color: #e2e8f0; padding: 48px 32px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        .dashboard-card { max-width: 1100px; margin: 0 auto; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
-        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 16px; }
-        .dash-title { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; }
-        .dash-sub { color: #94a3b8; margin-top: 8px; }
-        .pill { display: inline-flex; align-items: center; gap: 8px; background: #1e293b; color: #cbd5e1; padding: 10px 14px; border-radius: 999px; font-size: 14px; }
-        .pill span { font-weight: 600; color: #34d399; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
-        .tile { background: #0b1220; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 18px; }
-        .tile h3 { margin: 0 0 10px 0; font-size: 18px; }
-        .tile p { margin: 0; color: #cbd5e1; line-height: 1.5; }
-        .link-row { margin-top: 28px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
-        .link-row a { color: #c4d056; font-weight: 600; text-decoration: none; }
-        .link-row a:hover { text-decoration: underline; }
-    </style>
-
-    <div class="dashboard-shell">
-        <div class="dashboard-card">
-            <div class="dash-header">
-                <div>
-                    <div class="dash-title">Espace Étudiant</div>
-                    <div class="dash-sub">Connecté en tant que {{ app.user.fullname ?? 'étudiant' }} ({{ app.user.email ?? '' }})</div>
-                    <div class="pill">Rôle actif : <span>ÉTUDIANT</span></div>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-profile">
+                    <div class="profile-avatar"></div>
+                    <div class="profile-info">
+                        <h3>IUT de Haguenau</h3>
+                        <p>Dashboard</p>
+                    </div>
                 </div>
+
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">📊</div>
+                        <span>Tableau de bord</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">📈</div>
+                        <span>Analyse détaillé</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">🎨</div>
+                        <span>Personnalisation</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">📅</div>
+                        <span>Calendrier</span>
+                    </a>
+                </nav>
             </div>
 
-            <div class="grid">
-                <div class="tile">
-                    <h3>Vue personnelle</h3>
-                    <p>Visualisez vos cours et les indicateurs énergétiques associés.</p>
-                </div>
-                <div class="tile">
-                    <h3>Ressources</h3>
-                    <p>Accédez aux supports partagés par vos enseignants et aux bonnes pratiques.</p>
-                </div>
-                <div class="tile">
-                    <h3>Progression</h3>
-                    <p>Suivez vos activités et comparez vos performances énergétiques.</p>
-                </div>
-                <div class="tile">
-                    <h3>Accès Grafana</h3>
-                    <p>Consultez les dashboards Grafana mis à disposition des étudiants.</p>
-                </div>
+            <div class="sidebar-bottom">
+                <a href="{{ path('app_logout') }}" class="menu-item">
+                    <div class="menu-icon">⚙️</div>
+                    <span>Paramètres</span>
+                </a>
             </div>
+        </aside>
 
-            <div class="link-row">
-                <a href="#">Voir les tableaux de bord partagés</a>
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            </div>
-        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1 class="page-title">Tableau de Bord Énergétique</h1>
+                <p class="page-subtitle">Visualisation de la consommation électrique de l'IUT de Haguenau.</p>
+            </header>
+
+            <!-- Top Stats -->
+            <section class="stats-row">
+                <div class="stat-card">
+                    <p class="stat-label">Puissance en temps réel</p>
+                    <p class="stat-value">250 kWh</p>
+                    <p class="stat-change">+10% vs hier</p>
+                    <div class="stat-note">consommation total d'énergie de tout l'IUT sur 1 semaine</div>
+                </div>
+
+                <div class="stat-card">
+                    <p class="stat-label">Consommation totale du jour</p>
+                    <p class="stat-value">250 kWh</p>
+                    <p class="stat-change">-10% vs hier</p>
+                    <div class="stat-note">Indicateurs écologiques : Équivalent en CO2 ou nombre d'ampoules allumées</div>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="charts-row">
+                <!-- Left Chart - Line -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <p class="chart-title">Evolution de la Puissance Appelée</p>
+                        <p class="chart-main-value">Pic 250kW</p>
+                        <p class="chart-period">Aujourd'hui <span class="positive">+10.7%</span></p>
+                    </div>
+                    
+                    <div class="chart-area">
+                        <div class="chart-placeholder">Graphique de ligne</div>
+                    </div>
+                    
+                    <div class="time-labels">
+                        <span>00:00</span>
+                        <span>04:00</span>
+                        <span>08:00</span>
+                        <span>12:00</span>
+                        <span>16:00</span>
+                        <span>20:00</span>
+                    </div>
+                </div>
+
+                <!-- Right Chart - Bars -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <p class="chart-title">Bilan de la Consommation d'Energie</p>
+                        <p class="chart-main-value">Total 8400kWh</p>
+                        <p class="chart-period">Cette semaine <span class="negative">-15%</span></p>
+                    </div>
+                    
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar" style="height: 182px;"></div>
+                            <span class="bar-label">Lun</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 149px;"></div>
+                            <span class="bar-label">Mar</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 116px;"></div>
+                            <span class="bar-label">Mer</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 182px;"></div>
+                            <span class="bar-label">Jeu</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 194px;"></div>
+                            <span class="bar-label">Ven</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 66px;"></div>
+                            <span class="bar-label">Sam</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 48px;"></div>
+                            <span class="bar-label">Dim</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-note" style="position: absolute; top: 30px; right: 28px;">bilan de la consommation d'énergie pour chaque batiment</div>
+                </div>
+            </section>
+
+            <!-- Conseil -->
+            <section class="conseil-card">
+                <div class="conseil-icon">💡</div>
+                <div class="conseil-content">
+                    <h3 class="conseil-title">Conseil</h3>
+                    <p class="conseil-text">ConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseil</p>
+                </div>
+            </section>
+        </main>
     </div>
 {% endblock %}
