@@ -7,5 +7,12 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
+# Redirect root to login
+app_home:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: app_login
+
 controllers:
     resource: routing.controllers

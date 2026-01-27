@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Tableau de Bord Énergétique</title>
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Gauche: Formulaire -->
+        <div class="auth-left">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-placeholder">Logo FluxIT</div>
+            </div>
+
+            <!-- Titre -->
+            <div class="auth-header">
+                <h1>Bienvenue sur votre tableau de bord énergétique</h1>
+                <p>Veuillez-vous connecter pour continuer.</p>
+            </div>
+
+            <!-- Formulaire -->
+            <form method="POST" class="auth-form">
+                <div class="form-group">
+                    <label>Identifiant</label>
+                    <div class="input-wrapper">
+                        <input type="email" name="email" placeholder="Votre identifiant" required value="{{ last_username }}">
+                        <svg class="input-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <div class="input-wrapper">
+                        <input type="password" name="password" placeholder="Votre mot de passe" required>
+                        <svg class="input-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.02c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 15.48c-3.67-1.33-6-5.16-6-8.5v-5.7L12 3.7l6 3.8v5.7c0 3.34-2.33 7.17-6 8.5z"/></svg>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                {% if error %}
+                    <div class="error-message">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                <div class="forgot-password">
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Se connecter</button>
+            </form>
+
+            <!-- Inscription -->
+            <div class="auth-footer">
+                <p>Pas encore de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
+            </div>
+        </div>
+
+        <!-- Droite: Image -->
+        <div class="auth-right">
+            <div class="image-placeholder">Image du bâtiment</div>
+            <img src="{{ asset('images/iut-haguenau.png') }}" alt="Bâtiment de l'IUT de Haguenau">
+        </div>
+    </div>
+</body>
+</html>

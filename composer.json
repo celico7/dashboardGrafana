@@ -4,11 +4,19 @@
     "description": "Dashboard Grafana - Suivi de la consommation énergétique de l'IUT d'Haguenau",
     "require": {
         "php": ">=8.1",
+        "doctrine/doctrine-bundle": "^2.18",
+        "doctrine/doctrine-migrations-bundle": "^3.7",
+        "doctrine/orm": "^3.6",
+        "symfony/asset": "^7.4",
         "symfony/console": "^7.0",
         "symfony/dotenv": "^7.0",
         "symfony/flex": "^2.4",
         "symfony/framework-bundle": "^7.0",
-        "symfony/runtime": "^7.0"
+        "symfony/runtime": "^7.0",
+        "symfony/security-bundle": "^7.4",
+        "symfony/twig-bundle": "^7.4",
+        "symfony/yaml": "^7.4",
+        "twig/twig": "^3.23"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.51"
