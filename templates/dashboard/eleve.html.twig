@@ -3,7 +3,13 @@
 {% block title %}Tableau de Bord Énergétique{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar-dynamic.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -21,19 +27,19 @@
 
                 <nav class="sidebar-menu">
                     <a href="#" class="menu-item">
-                        <div class="menu-icon">📊</div>
+                        <div class="menu-icon"><i class="bi bi-speedometer2"></i></div>
                         <span>Tableau de bord</span>
                     </a>
                     <a href="#" class="menu-item">
-                        <div class="menu-icon">📈</div>
+                        <div class="menu-icon"><i class="bi bi-graph-up"></i></div>
                         <span>Analyse détaillé</span>
                     </a>
                     <a href="#" class="menu-item">
-                        <div class="menu-icon">🎨</div>
+                        <div class="menu-icon"><i class="bi bi-palette"></i></div>
                         <span>Personnalisation</span>
                     </a>
                     <a href="#" class="menu-item">
-                        <div class="menu-icon">📅</div>
+                        <div class="menu-icon"><i class="bi bi-calendar3"></i></div>
                         <span>Calendrier</span>
                     </a>
                 </nav>
@@ -41,7 +47,7 @@
 
             <div class="sidebar-bottom">
                 <a href="{{ path('app_logout') }}" class="menu-item">
-                    <div class="menu-icon">⚙️</div>
+                    <div class="menu-icon"><i class="bi bi-box-arrow-right"></i></div>
                     <span>Deco</span>
                 </a>
             </div>
@@ -58,17 +64,11 @@
             <!-- Top Stats -->
             <section class="stats-row">
                 <div class="stat-card">
-                    <p class="stat-label">Puissance en temps réel</p>
-                    <p class="stat-value">250 kWh</p>
-                    <p class="stat-change">+10% vs hier</p>
-                    <div class="stat-note">consommation total d'énergie de tout l'IUT sur 1 semaine</div>
+                    
                 </div>
 
                 <div class="stat-card">
-                    <p class="stat-label">Consommation totale du jour</p>
-                    <p class="stat-value">250 kWh</p>
-                    <p class="stat-change">-10% vs hier</p>
-                    <div class="stat-note">Indicateurs écologiques : Équivalent en CO2 ou nombre d'ampoules allumées</div>
+                  
                 </div>
             </section>
 
@@ -77,76 +77,20 @@
                 <!-- Left Chart - Line -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <p class="chart-title">Evolution de la Puissance Appelée</p>
-                        <p class="chart-main-value">Pic 250kW</p>
-                        <p class="chart-period">Aujourd'hui <span class="positive">+10.7%</span></p>
+                        
                     </div>
                     
-                    <div class="chart-area">
-                        <div class="chart-placeholder">Graphique de ligne</div>
-                    </div>
                     
-                    <div class="time-labels">
-                        <span>00:00</span>
-                        <span>04:00</span>
-                        <span>08:00</span>
-                        <span>12:00</span>
-                        <span>16:00</span>
-                        <span>20:00</span>
-                    </div>
                 </div>
 
                 <!-- Right Chart - Bars -->
                 <div class="chart-card">
-                    <div class="chart-header">
-                        <p class="chart-title">Bilan de la Consommation d'Energie</p>
-                        <p class="chart-main-value">Total 8400kWh</p>
-                        <p class="chart-period">Cette semaine <span class="negative">-15%</span></p>
-                    </div>
-                    
-                    <div class="bar-chart">
-                        <div class="bar-item">
-                            <div class="bar" style="height: 182px;"></div>
-                            <span class="bar-label">Lun</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 149px;"></div>
-                            <span class="bar-label">Mar</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 116px;"></div>
-                            <span class="bar-label">Mer</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 182px;"></div>
-                            <span class="bar-label">Jeu</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 194px;"></div>
-                            <span class="bar-label">Ven</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 66px;"></div>
-                            <span class="bar-label">Sam</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 48px;"></div>
-                            <span class="bar-label">Dim</span>
-                        </div>
+                   
                     </div>
 
-                    <div class="stat-note" style="position: absolute; top: 30px; right: 28px;">bilan de la consommation d'énergie pour chaque batiment</div>
-                </div>
+                     </div>
             </section>
 
-            <!-- Conseil -->
-            <section class="conseil-card">
-                <div class="conseil-icon">💡</div>
-                <div class="conseil-content">
-                    <h3 class="conseil-title">Conseil</h3>
-                    <p class="conseil-text">ConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseilConseil</p>
-                </div>
-            </section>
         </main>
     </div>
 {% endblock %}

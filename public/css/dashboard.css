@@ -1,10 +1,9 @@
 /* Dashboard - Variables */
 :root {
-    --dash-bg: #111a22;
-    --dash-sidebar: #0a1014;
-    --dash-card: #1e313f;
+    --dash-bg: #09090B;
+    --dash-sidebar: #18181B;
+    --dash-card: #171717;
     --dash-accent: #c4d056;
-    --dash-red: #eb604b;
     --dash-text: #ffffff;
     --dash-text-muted: rgba(255, 255, 255, 0.6);
     --dash-border: rgba(255, 255, 255, 0.3);
@@ -41,6 +40,10 @@ body {
     height: 100vh;
     left: 0;
     top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    border-right: 2px solid #27272A;
 }
 
 .sidebar-profile {
@@ -96,6 +99,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 20px;
+}
+
+.menu-icon i {
+    line-height: 1;
 }
 
 .sidebar-bottom .menu-item {
@@ -137,45 +145,11 @@ body {
 }
 
 .stat-card {
-    background: var(--dash-red);
+    background: var(--dash-card);
     border: 1px solid var(--dash-border);
     border-radius: 10px;
     padding: 41px 28.43px;
     position: relative;
-}
-
-.stat-label {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--dash-text-muted);
-    margin: 0 0 20px 0;
-}
-
-.stat-value {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0 0 11px 0;
-}
-
-.stat-change {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--dash-bg);
-}
-
-.stat-note {
-    position: absolute;
-    top: 50%;
-    right: 28px;
-    transform: translateY(-50%);
-    background: #ffff77;
-    color: #000;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 600;
-    max-width: 200px;
-    line-height: 1.3;
 }
 
 /* Middle Section - Charts */
@@ -196,123 +170,6 @@ body {
 
 .chart-header {
     margin-bottom: 32px;
-}
-
-.chart-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 30px 0;
-}
-
-.chart-main-value {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0 0 11px 0;
-}
-
-.chart-period {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0;
-}
-
-.chart-period .positive {
-    color: var(--dash-accent);
-}
-
-.chart-period .negative {
-    color: var(--dash-red);
-}
-
-/* Line Chart Area */
-.chart-area {
-    height: 191px;
-    position: relative;
-    margin-top: 24px;
-}
-
-.chart-placeholder {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--dash-text-muted);
-}
-
-.time-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 18px;
-    color: var(--dash-text);
-}
-
-/* Bar Chart */
-.bar-chart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    height: 194px;
-    margin-top: 32px;
-    gap: 12px;
-    padding: 0 10px;
-}
-
-.bar-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-}
-
-.bar {
-    width: 35.458px;
-    background: var(--dash-accent);
-    border-radius: 10px;
-}
-
-.bar-label {
-    font-size: 18px;
-    color: var(--dash-text);
-    margin-top: 10px;
-}
-
-/* Conseil Card */
-.conseil-card {
-    background: var(--dash-card);
-    border: 1px solid var(--dash-border);
-    border-radius: 10px;
-    padding: 25px 18.67px;
-    display: flex;
-    align-items: flex-start;
-    gap: 28px;
-}
-
-.conseil-icon {
-    width: 28px;
-    height: 53px;
-    flex-shrink: 0;
-}
-
-.conseil-content {
-    flex: 1;
-}
-
-.conseil-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 14px 0;
-}
-
-.conseil-text {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.4;
 }
 
 /* Responsive */
@@ -345,13 +202,6 @@ body {
     .charts-row {
         grid-template-columns: 1fr;
     }
-
-    .stat-note {
-        position: static;
-        transform: none;
-        margin-top: 12px;
-        display: inline-block;
-    }
 }
 
 @media (max-width: 768px) {
@@ -373,13 +223,5 @@ body {
 
     .page-subtitle {
         font-size: 18px;
-    }
-
-    .bar-chart {
-        gap: 6px;
-    }
-
-    .bar {
-        width: 28px;
     }
 }
