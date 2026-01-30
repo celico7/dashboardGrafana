@@ -45,29 +45,41 @@ class AuthController extends AbstractController
             $errors = [];
 
             if (!$fullname || strlen($fullname) < 3) {
-                $errors[] = 'Le nom complet doit contenir au moins 3 caractères';
+                $errors['fullname'] = ['Le nom complet doit contenir au moins 3 caractères'];
             }
 
             if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors[] = 'Email invalide';
+                $errors['email'] = ['Email invalide'];
             }
 
-            if (!$password || strlen($password) < 8) {
-                $errors[] = 'Le mot de passe doit contenir au moins 8 caractères';
+            // Validation du mot de passe sécurisé
+            $passwordErrors = [];
+            if (!$password || strlen($password) < 12) {
+                $passwordErrors[] = 'Le mot de passe doit contenir au moins 12 caractères';
+            }
+            if ($password && !preg_match('/[0-9]/', $password)) {
+                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 chiffre';
+            }
+            if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\\\/;~`]/', $password)) {
+                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 caractère spécial';
+            }
+
+            if (!empty($passwordErrors)) {
+                $errors['password'] = $passwordErrors;
             }
 
             if ($password !== $passwordConfirm) {
-                $errors[] = 'Les mots de passe ne correspondent pas';
+                $errors['password_confirm'] = ['Les mots de passe ne correspondent pas'];
             }
 
             if (!in_array($role, ['ROLE_PROFESSEUR', 'ROLE_ETUDIANT', 'ROLE_GESTIONNAIRE'])) {
-                $errors[] = 'Rôle invalide';
+                $errors['role'] = ['Rôle invalide'];
             }
 
             // Vérifier si l'email existe déjà
             $existingUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
             if ($existingUser) {
-                $errors[] = 'Cet email est déjà utilisé';
+                $errors['email'] = ['Cet email est déjà utilisé'];
             }
 
             if (empty($errors)) {
