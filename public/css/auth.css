@@ -70,7 +70,7 @@ html, body {
 }
 
 .auth-header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .auth-header h1 {
@@ -114,6 +114,10 @@ html, body {
     color: var(--text);
     font-size: 15px;
     transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.role-option{
+    color: black;
 }
 
 .input-wrapper input:focus,
@@ -309,4 +313,28 @@ html, body {
     .auth-header h1 {
         font-size: 24px;
     }
+}
+
+/* Footer crédits */
+.auth-credits {
+    text-align: center;
+   
+}
+
+.auth-credits p {
+    margin: 0;
+    font-size: 11px;
+    color: rgba(159, 179, 200, 0.6);
+    letter-spacing: 0.3px;
+}
+
+.auth-credits .credit-name {
+    font-weight: 700;
+    color: rgba(159, 179, 200, 0.75);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.auth-credits .credit-name:hover {
+    color: var(--primary);
 }

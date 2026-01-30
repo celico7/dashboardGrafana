@@ -48,10 +48,12 @@
                     <div class="form-group">
                         <label>Type de compte</label>
                         <select name="role" required class="input-select" value="{{ role ?? '' }}">
+                            <div class="role-option">
                             <option value="">-- Sélectionnez un rôle --</option>
                             <option value="ROLE_PROFESSEUR">Professeur</option>
                             <option value="ROLE_ETUDIANT">Étudiant</option>
                             <option value="ROLE_GESTIONNAIRE">Gestionnaire</option>
+                            </div>
                         </select>
                         {% if errors.role is defined %}
                             <div class="field-error">
@@ -109,6 +111,14 @@
                 <div class="auth-footer">
                     <p>Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Se connecter</a></p>
                 </div>
+            </div>
+
+            <div class="auth-credits">
+                <p>Développé par 
+                    <a href="https://github.com/melindaland" target="_blank" class="credit-name">ALAND Mélinda</a>, 
+                    <a href="#" class="credit-name">ASLAN Baran</a> et 
+                    <a href="https://github.com/celico7" target="_blank" class="credit-name">HOFFMANN Célia</a> - 2026
+                </p>
             </div>
         </div>
 
