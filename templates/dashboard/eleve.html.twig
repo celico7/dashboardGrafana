@@ -14,47 +14,14 @@
 
 {% block body %}
     <div class="dashboard-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div>
-                <div class="sidebar-profile">
-                    <div class="profile-avatar"></div>
-                    <div class="profile-info">
-                        <h3>IUT de Haguenau</h3>
-                        <p>Dashboard</p>
-                    </div>
-                </div>
-
-                <nav class="sidebar-menu">
-                    <a href="#" class="menu-item">
-                        <div class="menu-icon"><i class="bi bi-speedometer2"></i></div>
-                        <span>Tableau de bord</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <div class="menu-icon"><i class="bi bi-graph-up"></i></div>
-                        <span>Analyse détaillé</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <div class="menu-icon"><i class="bi bi-palette"></i></div>
-                        <span>Personnalisation</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <div class="menu-icon"><i class="bi bi-calendar3"></i></div>
-                        <span>Calendrier</span>
-                    </a>
-                </nav>
-            </div>
-
-            <div class="sidebar-bottom">
-                <a href="{{ path('app_logout') }}" class="menu-item">
-                    <div class="menu-icon"><i class="bi bi-box-arrow-right"></i></div>
-                    <span>Deco</span>
-                </a>
-            </div>
-        </aside>
-
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Bouton déconnexion -->
+            <a href="{{ path('app_logout') }}" class="logout-btn">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Déconnexion</span>
+            </a>
+            
             <!-- Page Header -->
             <header class="page-header">
                 <h1 class="page-title">Tableau de Bord Énergétique</h1>
@@ -64,11 +31,13 @@
             <!-- Top Stats -->
             <section class="stats-row">
                 <div class="stat-card">
-                    
+                    <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-1&__feature.dashboardSceneSolo=true" 
+                    width="650" height="300" frameborder="0"></iframe>
                 </div>
 
                 <div class="stat-card">
-                  
+                  <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-2&__feature.dashboardSceneSolo=true" 
+                  width="650" height="300" frameborder="0"></iframe>
                 </div>
             </section>
 
@@ -77,18 +46,16 @@
                 <!-- Left Chart - Line -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        
-                    </div>
-                    
-                    
+                        <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-3&__feature.dashboardSceneSolo=true" 
+                        width="650" height="300" frameborder="0"></iframe>
+                    </div>       
                 </div>
 
                 <!-- Right Chart - Bars -->
                 <div class="chart-card">
-                   
-                    </div>
-
-                     </div>
+                    <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-4&__feature.dashboardSceneSolo=true" 
+                    width="650" height="300" frameborder="0"></iframe>
+                </div>
             </section>
 
         </main>
