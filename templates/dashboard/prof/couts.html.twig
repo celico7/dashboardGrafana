@@ -19,37 +19,53 @@
     <main class="prof-main-content">
         <header class="prof-page-header">
             <h1 class="prof-page-title">Analyse des Coûts</h1>
-            <p class="prof-page-subtitle">Visualisation des coûts liées la consommation électrique de l'IUT de Haguenau.</p>
+            <p class="prof-page-subtitle">Visualisation des coûts liées la consommation électrique de l'IUT de Haguenau.
+            </p>
         </header>
 
-        <section class="prof-cost-grid">
-            <div class="prof-card large-card">
-                <h3 class="card-title">Consommation Mensuelle 2025</h3>
-                <h4 class="card-subtitle">Évolution de la consommation et des coûts</h4>
-                <div class="chart-container">
-                    <iframe class="grafana-iframe"
-                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+        <section class="prof-stats-grid-2">
+            <div class="prof-card">
+                <div class="card-icon-top">
+                    <i class="bi bi-calendar3"></i>
+                </div>
+                <h3 class="card-title">Bilan budgétaire annuel</h3>
+                <div class="stat-iframe-container">
+                    <iframe
+                        src="http://localhost:3000/d-solo/adtzjch/tableau-de-bord-vue-gestionnaire-analyse-des-couts?orgId=1&from=1738368000000&to=1767225600000&timezone=browser&var-prix_hp=0.20&panelId=panel-13&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
 
-            <div class="prof-card large-card">
-                <h3 class="card-title">Comparaison 2024 vs 2025</h3>
-                <h4 class="card-subtitle">Différences de consommation par mois</h4>
-                <div class="chart-container">
-                    <iframe class="grafana-iframe"
-                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+            <div class="prof-card">
+                <div class="card-icon-top">
+                    <i class="bi bi-calculator"></i>
+                </div>
+                <h3 class="card-title">Prix moyen d'un kilowattheure en euros</h3>
+                <div class="stat-iframe-container">
+                    <iframe
+                        src="http://localhost:3000/d-solo/adtzjch/tableau-de-bord-vue-gestionnaire-analyse-des-couts?orgId=1&from=1738368000000&to=1767225600000&timezone=browser&var-prix_hp=0.20&showCategory=Value%20options&panelId=panel-3&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
         </section>
 
-        <section class="prof-cost-grid">
+        <section class="prof-vertical-grid">
+            <div class="prof-card large-card">
+                <h3 class="card-title">Consommation mensuelle sur l'année en cours</h3>
+                <h4 class="card-subtitle">Historique des dépenses et usages électriques</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/adtzjch/tableau-de-bord-vue-gestionnaire-analyse-des-couts?orgId=1&from=1738368000000&to=1767225600000&timezone=browser&var-prix_hp=0.20&panelId=panel-9&__feature.dashboardSceneSolo=true&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
             <div class="prof-card large-card">
                 <h3 class="card-title">Évolution du Prix du kWh</h3>
                 <h4 class="card-subtitle">Prix du kilowatt en euros sur 8 ans</h4>
-                <div class="chart-container" style="flex: 0 0 250px;"> <iframe class="grafana-iframe"
-                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                src="http://localhost:3000/d-solo/adtzjch/tableau-de-bord-vue-gestionnaire-analyse-des-couts?orgId=1&from=1738368000000&to=1767225600000&timezone=browser&var-prix_hp=0.20&panelId=panel-12&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
@@ -59,13 +75,11 @@
                 <h4 class="card-subtitle">Données détaillées</h4>
                 <div class="chart-container">
                     <iframe class="grafana-iframe"
-                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                src="http://localhost:3000/d-solo/adtzjch/tableau-de-bord-vue-gestionnaire-analyse-des-couts?orgId=1&from=1738368000000&to=1767225600000&timezone=browser&var-prix_hp=0.20&panelId=panel-11&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
-
         </section>
-
     </main>
 </div>
 {% endblock %}
