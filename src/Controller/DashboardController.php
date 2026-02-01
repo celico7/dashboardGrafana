@@ -32,14 +32,6 @@ class DashboardController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 
-    #[Route('/prof', name: 'app_prof_dashboard')]
-    public function prof(): Response
-    {
-        return $this->render('dashboard/prof.html.twig', [
-            'grafana_url' => $_ENV['GRAFANA_URI'] ?? 'http://localhost:3000'
-        ]);
-    }
-
     #[Route('/eleve', name: 'app_eleve_dashboard')]
     public function eleve(): Response
     {

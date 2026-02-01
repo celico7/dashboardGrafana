@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Analyse des Coûts{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{{ asset('css/dashboard-prof.css') }}">
+<link rel="stylesheet" href="{{ asset('css/sidebar-dynamic.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/sidebar.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="prof-layout">
+    {% include 'dashboard/prof/_sidebar.html.twig' %}
+
+    <main class="prof-main-content">
+        <header class="prof-page-header">
+            <h1 class="prof-page-title">Analyse des Coûts</h1>
+            <p class="prof-page-subtitle">Visualisation des coûts liées la consommation électrique de l'IUT de Haguenau.</p>
+        </header>
+
+        <section class="prof-cost-grid">
+            <div class="prof-card large-card">
+                <h3 class="card-title">Consommation Mensuelle 2025</h3>
+                <h4 class="card-subtitle">Évolution de la consommation et des coûts</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="prof-card large-card">
+                <h3 class="card-title">Comparaison 2024 vs 2025</h3>
+                <h4 class="card-subtitle">Différences de consommation par mois</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="prof-cost-grid">
+            <div class="prof-card large-card">
+                <h3 class="card-title">Évolution du Prix du kWh</h3>
+                <h4 class="card-subtitle">Prix du kilowatt en euros sur 8 ans</h4>
+                <div class="chart-container" style="flex: 0 0 250px;"> <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="prof-card large-card">
+                <h3 class="card-title">Gestion des coûts</h3>
+                <h4 class="card-subtitle">Données détaillées</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+{% endblock %}

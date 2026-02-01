@@ -1,16 +1,24 @@
-/* Dashboard Prof - Variables */
+/* =========================================
+   DASHBOARD PROF - THÈME DARK MODERNE
+   ========================================= */
+
 :root {
-    --prof-bg: #09090B;
-    --prof-sidebar: #18181B;
-    --prof-card: #171717;
-    --prof-accent: #c4d056;
-    --prof-dark: #111a22;
-    --prof-text: #ffffff;
+    /* --- COULEURS GLOBALES --- */
+    --prof-bg: #000000;       /* Fond de la page (Noir profond) */
+    --prof-sidebar: #09090b;  /* Fond de la sidebar (Zinc sombre) */
+    --prof-text: #ffffff;     /* Texte général */
     --prof-text-muted: rgba(255, 255, 255, 0.6);
-    --prof-border: rgba(255, 255, 255, 0.3);
+    --prof-accent: #C4D056;   /* Vert lime tendance */
+
+    /* --- COULEURS DES CARTES (Mode Sombre) --- */
+    /* #111217 est la couleur exacte du fond Grafana Dark pour une fusion parfaite */
+    --card-bg: #111217;
+    --card-text: #ffffff;
+    --card-border: #27272a;   /* Bordure subtile pour détacher la carte du fond noir */
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre diffuse */
 }
 
-/* Reset & Base */
+/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -23,13 +31,14 @@ body {
     color: var(--prof-text);
 }
 
-/* Main Layout */
 .prof-layout {
     display: flex;
     min-height: 100vh;
 }
 
-/* Sidebar */
+/* =========================================
+   SIDEBAR (Gauche)
+   ========================================= */
 .prof-sidebar {
     width: 307px;
     background: var(--prof-sidebar);
@@ -44,7 +53,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 100;
-    border-right: 2px solid #27272A;
+    border-right: 1px solid var(--card-border);
 }
 
 .prof-sidebar-profile {
@@ -58,17 +67,19 @@ body {
     width: 67px;
     height: 67px;
     border-radius: 50%;
-    background: #2a3f4f;
+    background: #2a3f4f; /* Couleur de placeholder avatar */
+    flex-shrink: 0;
 }
 
 .prof-profile-info h3 {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
+    color: white;
 }
 
 .prof-profile-info p {
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 0 0 0;
     color: var(--prof-text-muted);
 }
@@ -76,140 +87,284 @@ body {
 .prof-sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px; /* Espacement ajusté */
 }
 
 .prof-menu-item {
     display: flex;
     align-items: center;
     gap: 15px;
-    color: var(--prof-text);
+    color: var(--prof-text-muted);
     text-decoration: none;
-    font-size: 18px;
-    padding: 8px 0;
-    transition: opacity 0.2s;
+    font-size: 16px;
+    padding: 12px 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
 .prof-menu-item:hover {
-    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.prof-menu-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .prof-menu-icon {
-    width: 33px;
-    height: 33px;
+    width: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
 }
 
-.prof-menu-icon i {
-    line-height: 1;
-}
-
 .prof-sidebar-bottom .prof-menu-item {
     margin-top: auto;
+    color: #ef4444; /* Rouge pour déconnexion (optionnel) */
 }
 
-/* Main Content */
+/* =========================================
+   CONTENU PRINCIPAL (Droite)
+   ========================================= */
 .prof-main-content {
     margin-left: 307px;
     flex: 1;
     padding: 72px 54px;
+    width: 100%;
 }
 
-/* Page Header */
+/* En-tête de page */
 .prof-page-header {
-    margin-bottom: 34px;
+    margin-bottom: 40px;
 }
 
 .prof-page-title {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 700;
-    margin: 0 0 16px 0;
+    margin: 0 0 10px 0;
+    color: white;
+    letter-spacing: -1px;
 }
 
 .prof-page-subtitle {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     margin: 0;
-    color: var(--prof-text);
+    color: var(--prof-text-muted);
 }
 
-/* Stats Grid - 4 cards */
+/* =========================================
+   GRILLES (Layout des cartes)
+   ========================================= */
+
+/* Section 1 : Les 3 chiffres clés du haut */
 .prof-stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 41px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Container pour les "Gros Chiffres" */
+.stat-iframe-container {
+    width: 100%;
+    height: 150px; /* Hauteur ajustée pour laisser respirer le chiffre */
+    display: flex;
+    align-items: center;     /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+
+    overflow: hidden;
+    position: relative;
+}
+
+/* On s'assure que l'iframe prend toute la place du container flexible */
+.stat-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+}
+
+/* Section 2 : Les 2 grands graphiques du bas */
+.prof-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes strictes */
+    gap: 30px;
     margin-bottom: 53px;
 }
 
-.prof-stat-card {
-    background: var(--prof-card);
-    border: 1px solid var(--prof-border);
-    border-radius: 10px;
-    padding: 17px;
+/* =========================================
+   STYLE DES CARTES (Dark Mode)
+   ========================================= */
+.prof-card {
+    background-color: var(--card-bg) !important; /* #111217 */
+    color: var(--card-text);
+    border: 1px solid var(--card-border);
+    border-radius: 16px; /* Arrondi moderne */
+    padding: 24px;
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden; /* Important pour que l'iframe ne dépasse pas */
+}
+
+.large-card {
+    min-height: 450px; /* Hauteur augmentée pour les graphiques */
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff; /* Titre blanc */
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #a1a1aa; /* Gris clair (Zinc-400) lisible sur fond noir */
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   PARTIE ANALYSE
+   ========================================= */
+/* --- GRILLE VERTICALE (Pour la page Analyse) --- */
+.prof-vertical-grid {
+    display: flex;
+    flex-direction: column; /* Empilement vertical */
+    gap: 30px;              /* Espace entre chaque carte */
+    margin-bottom: 50px;
+}
+
+/* Optionnel : Si tu veux que ces cartes soient encore plus hautes que les autres */
+.extra-large-card {
+    min-height: 500px;
+}
+
+/* =========================================
+   PARTIE COUTS
+   ========================================= */
+
+/* 1. Les indicateurs de tendance (+8.3% etc) */
+.trend-indicator {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: auto; /* Pousse à droite */
+}
+.trend-up { color: #f87171; } /* Rouge (Hausse de coût = Mauvais) */
+.trend-down { color: #4ade80; } /* Vert (Baisse = Bon) */
+
+/* 2. Les icônes dans des cercles (Haut de page) */
+.icon-circle-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    height: 177px;
+    margin-bottom: 15px;
+    color: #ffd700; /* Jaune/Or pour l'argent */
 }
 
-/* Middle Section - 2 cards side by side */
-.prof-middle-row {
+/* 3. La grille spécifique pour cette page (2 colonnes partout) */
+.prof-cost-grid {
     display: grid;
-    grid-template-columns: 577px 1fr;
-    gap: 47px;
-    margin-bottom: 53px;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+    gap: 30px;
+    margin-bottom: 30px;
 }
 
-.prof-chart-card {
-    background: var(--prof-card);
-    border: 1px solid var(--prof-border);
-    border-radius: 10px;
-    padding: 22px 23px;
+/* 4. Le Tableau de données (Bas à droite) */
+.prof-table-container {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-/* Table Section */
-.prof-table-card {
-    background: var(--prof-card);
-    border: 1px solid var(--prof-border);
-    border-radius: 10px;
-    overflow: hidden;
+.prof-table-header {
+    background-color: #d9f99d; /* Le vert clair de ton image */
+    color: #000;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 10px;
+    text-transform: uppercase;
 }
 
-.prof-table-header-section {
-    padding: 26px 25px;
+.prof-table-row {
+    border-bottom: 1px solid #27272a;
+    height: 40px;
 }
 
-.prof-table-header-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    display: inline;
+/* 5. La petite boite d'info en bas du graphique prix (Bas à gauche) */
+.info-box-bottom {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: auto; /* Pousse vers le bas */
+    border: 1px solid #27272a;
 }
 
-.prof-table-header-subtitle {
-    font-size: 20px;
-    font-weight: 600;
+.info-box-text {
+    font-size: 0.8rem;
     color: var(--prof-text-muted);
-    margin-left: 8px;
-    display: inline;
 }
 
-/* Responsive */
+/* =========================================
+   CONTAINERS IFRAME / GRAFANA
+   ========================================= */
+
+/* Container flexible qui prend tout l'espace restant */
+.chart-container {
+    flex: 1;            /* Prend toute la hauteur disponible */
+    width: 100%;
+    min-height: 0;      /* Évite les bugs de hauteur Flexbox */
+    margin-top: 10px;
+    position: relative;
+    border-radius: 8px;
+    /* Pas de background ici pour laisser voir la carte */
+}
+
+/* Iframe Grafana */
+.grafana-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Container spécifique pour les gros chiffres (Statistiques) */
+.stat-value-container {
+    height: 100px; /* Hauteur fixe pour les chiffres */
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+/* Écrans moyens (Laptops/Tablettes paysage) */
 @media (max-width: 1400px) {
     .prof-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(2, 1fr); /* 2 cartes en haut */
     }
 
-    .prof-middle-row {
-        grid-template-columns: 1fr;
+    .prof-charts-grid {
+        grid-template-columns: 1fr; /* Les graphiques passent l'un sous l'autre */
         gap: 24px;
     }
 }
 
+/* Tablettes portrait */
 @media (max-width: 1200px) {
     .prof-sidebar {
         width: 250px;
@@ -218,39 +373,36 @@ body {
 
     .prof-main-content {
         margin-left: 250px;
+        padding: 40px 30px;
     }
 
     .prof-stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Tout en 1 colonne */
     }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
     .prof-sidebar {
         width: 100%;
-        position: static;
+        position: relative;
         height: auto;
-        padding: 32px 24px;
+        padding: 20px;
+        border-right: none;
+        border-bottom: 1px solid #27272A;
     }
 
     .prof-main-content {
         margin-left: 0;
-        padding: 32px 20px;
+        padding: 20px;
     }
 
     .prof-page-title {
         font-size: 32px;
     }
 
-    .prof-page-subtitle {
-        font-size: 18px;
-    }
-
-    .prof-table-scroll {
-        overflow-x: auto;
-    }
-
-    .prof-table {
-        min-width: 800px;
+    .prof-stats-grid, .prof-charts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }

@@ -1,0 +1,41 @@
+<aside class="prof-sidebar">
+    <div>
+        <div class="prof-sidebar-profile">
+            <div class="prof-profile-avatar"></div>
+            <div class="prof-profile-info">
+                <h3>IUT de Haguenau</h3>
+                <p>Dashboard</p>
+            </div>
+        </div>
+
+        <nav class="prof-sidebar-menu">
+            {# Lien 1 : Tableau de bord #}
+            <a href="{{ path('app_prof_dashboard') }}"
+                class="prof-menu-item {{ app.request.get('_route') == 'app_prof_dashboard' ? 'active' : '' }}">
+                <div class="prof-menu-icon"><i class="bi bi-speedometer2"></i></div>
+                <span>Tableau de bord</span>
+            </a>
+
+            {# Lien 2 : Analyse détaillée #}
+            <a href="{{ path('app_prof_analyse') }}"
+                class="prof-menu-item {{ app.request.get('_route') == 'app_prof_analyse' ? 'active' : '' }}">
+                <div class="prof-menu-icon"><i class="bi bi-graph-up"></i></div>
+                <span>Analyse détaillée</span>
+            </a>
+
+            {# Lien 3 : Analyse des coûts #}
+            <a href="{{ path('app_prof_couts') }}"
+                class="prof-menu-item {{ app.request.get('_route') == 'app_prof_couts' ? 'active' : '' }}">
+                <div class="prof-menu-icon"><i class="bi bi-wallet2"></i></div>
+                <span>Analyse des coûts</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="prof-sidebar-bottom">
+        <a href="{{ path('app_logout') }}" class="prof-menu-item">
+            <div class="prof-menu-icon"><i class="bi bi-box-arrow-right"></i></div>
+            <span>Déconnexion</span>
+        </a>
+    </div>
+</aside>

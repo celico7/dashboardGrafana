@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Analyse Détaillée{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{{ asset('css/dashboard-prof.css') }}">
+<link rel="stylesheet" href="{{ asset('css/sidebar-dynamic.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/sidebar.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="prof-layout">
+    {% include 'dashboard/prof/_sidebar.html.twig' %}
+
+    <main class="prof-main-content">
+        <header class="prof-page-header">
+            <h1 class="prof-page-title">Analyse Détaillée</h1>
+            <p class="prof-page-subtitle">Visualisation détaillée de la consommation électrique de l'IUT de Haguenau.</p>
+        </header>
+
+        <section class="prof-vertical-grid">
+
+            <div class="prof-card large-card">
+                <h3 class="card-title">Évolution de la consommation énergétique par année</h3>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="prof-card large-card">
+                <h3 class="card-title">Évolution de la consommation énergétique par bâtiment</h3>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="prof-card large-card">
+                <h3 class="card-title">Évolution de la consommation énergétique par étages</h3>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/TON_UID/slug?orgId=1&panelId=XX&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</div>
+{% endblock %}
