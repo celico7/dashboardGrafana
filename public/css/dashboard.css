@@ -1,15 +1,22 @@
-/* Dashboard - Variables */
+/* =========================================
+   DASHBOARD ÉLÈVE - THÈME DARK MODERNE (FULL WIDTH)
+   ========================================= */
+
 :root {
-    --dash-bg: #09090B;
-    --dash-sidebar: #18181B;
-    --dash-card: #171717;
-    --dash-accent: #c4d056;
-    --dash-text: #ffffff;
+    /* --- COULEURS GLOBALES --- */
+    --dash-bg: #000000;       /* Noir profond */
+    --dash-text: #ffffff;     /* Blanc */
     --dash-text-muted: rgba(255, 255, 255, 0.6);
-    --dash-border: rgba(255, 255, 255, 0.3);
+    --dash-accent: #C4D056;   /* Vert lime */
+
+    /* --- COULEURS DES CARTES --- */
+    --card-bg: #111217;       /* Gris sombre Grafana */
+    --card-text: #ffffff;
+    --card-border: #27272a;   /* Bordure subtile */
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Reset & Base */
+/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -22,42 +29,50 @@ body {
     color: var(--dash-text);
 }
 
-/* Main Layout */
 .dashboard-layout {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 }
 
-/* Main Content */
+/* =========================================
+   CONTENU PRINCIPAL (PLEINE LARGEUR)
+   ========================================= */
 .main-content {
-    margin-left: 0;
-    flex: 1;
-    padding: 72px 54px;
+    width: 100%;
+    max-width: 1600px; /* Limite la largeur sur les écrans géants pour la lisibilité */
+    margin: 0 auto;    /* Centre le contenu */
+    padding: 60px 50px;
     position: relative;
 }
 
-/* Bouton déconnexion */
+/* =========================================
+   BOUTON DÉCONNEXION (Position Absolue)
+   ========================================= */
 .logout-btn {
     position: absolute;
-    top: 30px;
-    right: 54px;
+    top: 60px; /* Aligné avec le titre */
+    right: 50px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: var(--dash-card);
-    border: 1px solid var(--dash-border);
-    border-radius: 10px;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
     color: var(--dash-text);
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
 }
 
 .logout-btn:hover {
     background: var(--dash-accent);
-    color: var(--dash-bg);
+    color: #000000; /* Texte noir sur fond vert */
+    border-color: var(--dash-accent);
     transform: translateY(-2px);
 }
 
@@ -65,115 +80,157 @@ body {
     font-size: 18px;
 }
 
-/* Page Header */
+/* =========================================
+   HEADER
+   ========================================= */
 .page-header {
-    margin-bottom: 32px;
+    margin-bottom: 50px;
+    padding-right: 150px; /* Pour ne pas chevaucher le bouton logout sur petit écran */
 }
 
 .page-title {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 700;
-    margin: 0 0 16px 0;
-    max-width: 827px;
+    margin: 0 0 10px 0;
+    color: white;
+    letter-spacing: -1px;
 }
 
 .page-subtitle {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     margin: 0;
-    color: var(--dash-text);
+    color: var(--dash-text-muted);
 }
 
-/* Top Stats Cards */
-.stats-row {
+/* =========================================
+   GRILLES (Layout)
+   ========================================= */
+
+/* Section 1 : 3 blocs en haut */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Section 2 : 2 grands blocs en bas */
+.charts-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20.5px;
-    margin-bottom: 76px;
+    gap: 30px;
+    margin-bottom: 50px;
 }
 
-.stat-card {
-    background: var(--dash-card);
-    border: 1px solid var(--dash-border);
-    border-radius: 10px;
-    padding: 41px 28.43px;
+/* =========================================
+   CARTES (STYLE MODERNE)
+   ========================================= */
+.modern-card {
+    background-color: var(--card-bg) !important;
+    color: var(--card-text);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Middle Section - Charts */
-.charts-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20.5px;
-    margin-bottom: 46px;
+.large-card {
+    min-height: 450px;
 }
 
-.chart-card {
-    background: var(--dash-card);
-    border: 1px solid var(--dash-border);
-    border-radius: 10px;
-    padding: 30px 18.67px 30px 18.66px;
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #a1a1aa;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   IFRAMES & CONTENEURS
+   ========================================= */
+
+/* Pour les chiffres centrés */
+.stat-iframe-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.stat-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+}
+
+/* Pour les graphiques (prend tout l'espace restant) */
+.chart-container {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    margin-top: 10px;
     position: relative;
+    border-radius: 8px;
 }
 
-.chart-header {
-    margin-bottom: 32px;
+.grafana-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
-/* Responsive */
-@media (max-width: 1400px) {
-    .main-content {
-        padding: 48px 32px;
-    }
-
-    .page-title {
-        font-size: 38px;
-    }
-
-    .stats-row,
-    .charts-row {
-        gap: 16px;
-    }
-}
-
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 @media (max-width: 1200px) {
-    .main-content {
-        margin-left: 0;
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    .stats-row,
-    .charts-row {
+    .charts-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .logout-btn {
-        right: 32px;
     }
 }
 
 @media (max-width: 768px) {
     .main-content {
-        margin-left: 0;
-        padding: 32px 20px;
-        padding-top: 80px;
+        padding: 30px 20px;
+        padding-top: 80px; /* Place pour le bouton logout qui passera au dessus */
     }
 
-    .page-title {
-        font-size: 32px;
-    }
-
-    .page-subtitle {
-        font-size: 18px;
-    }
-    
     .logout-btn {
         top: 20px;
         right: 20px;
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
     
-    .logout-btn span {
-        display: none;
+    .page-header {
+        padding-right: 0;
+    }
+    
+    .page-title {
+        font-size: 32px;
     }
 }

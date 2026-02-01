@@ -1,63 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tableau de Bord Énergétique{% endblock %}
+{% block title %}Tableau de Bord Étudiant{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sidebar-dynamic.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('js/sidebar.js') }}"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{# On utilise le nouveau CSS spécifique élève #}
+<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="dashboard-layout">
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Bouton déconnexion -->
-            <a href="{{ path('app_logout') }}" class="logout-btn">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Déconnexion</span>
-            </a>
-            
-            <!-- Page Header -->
-            <header class="page-header">
-                <h1 class="page-title">Tableau de Bord Énergétique</h1>
-                <p class="page-subtitle">Visualisation de la consommation électrique de l'IUT de Haguenau.</p>
-            </header>
+<div class="dashboard-layout">
 
-            <!-- Top Stats -->
-            <section class="stats-row">
-                <div class="stat-card">
-                    <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-1&__feature.dashboardSceneSolo=true" 
-                    width="650" height="300" frameborder="0"></iframe>
+    <main class="main-content">
+
+        <a href="{{ path('app_logout') }}" class="logout-btn">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Déconnexion</span>
+        </a>
+
+        <header class="page-header">
+            <h1 class="page-title">Tableau de Bord</h1>
+            <p class="page-subtitle">Synthèse globale de la consommation électrique de l'IUT.</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="modern-card">
+                <h3 class="card-title">Consommation électrique <br>totale</h3>
+                <h4 class="card-subtitle">sur le mois précédent</h4>
+                <div class="stat-iframe-container">
+                    <iframe
+                        src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=6&__feature.dashboardSceneSolo=true&kiosk&theme=dark">
+                    </iframe>
                 </div>
+            </div>
 
-                <div class="stat-card">
-                  <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-2&__feature.dashboardSceneSolo=true" 
-                  width="650" height="300" frameborder="0"></iframe>
+            <div class="modern-card">
+                <h3 class="card-title">Coût total de la consommation</h3>
+                <h4 class="card-subtitle">sur le mois précédent</h4>
+                <div class="stat-iframe-container">
+                    <iframe
+                        src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-8&__feature.dashboardSceneSolo=true&kiosk&theme=dark">
+                    </iframe>
                 </div>
-            </section>
+            </div>
 
-            <!-- Charts -->
-            <section class="charts-row">
-                <!-- Left Chart - Line -->
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-3&__feature.dashboardSceneSolo=true" 
-                        width="650" height="300" frameborder="0"></iframe>
-                    </div>       
+            <div class="modern-card">
+                <h3 class="card-title">Empreinte carbone</h3>
+                <h4 class="card-subtitle">sur le mois précédent</h4>
+                <div class="stat-iframe-container">
+                    <iframe
+                        src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1767222000000&to=1769900399999&timezone=browser&var-choix_bat=B%C3%A2timent%20A&showCategory=Thresholds&panelId=7&__feature.dashboardSceneSolo=true&kiosk&theme=dark">
+                    </iframe>
                 </div>
+            </div>
+        </section>
 
-                <!-- Right Chart - Bars -->
-                <div class="chart-card">
-                    <iframe src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-4&__feature.dashboardSceneSolo=true" 
-                    width="650" height="300" frameborder="0"></iframe>
+        <section class="charts-grid">
+            <div class="modern-card large-card">
+                <h3 class="card-title">Répartition de la puissance</h3>
+                <h4 class="card-subtitle">Par bâtiment et total IUT</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&var-choix_bat=B%C3%A2timent%20B&var-choix_bat=B%C3%A2timent%20C&var-choix_bat=IUT&panelId=panel-3&__feature.dashboardSceneSolo=true&theme=dark&kiosk">
+                    </iframe>
                 </div>
-            </section>
+            </div>
 
-        </main>
-    </div>
+            <div class="modern-card large-card">
+                <h3 class="card-title">Bilan de la Consommation</h3>
+                <h4 class="card-subtitle">pour chaque bâtiment</h4>
+                <div class="chart-container">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/adczcsr/tableau-de-bord-vue-par-defaut?orgId=1&from=now-1M%2fM&to=now-1M%2fM&timezone=browser&var-choix_bat=B%C3%A2timent%20A&showCategory=Bar%20chart&panelId=panel-4&__feature.dashboardSceneSolo=true&theme=dark&kiosk">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
 {% endblock %}
