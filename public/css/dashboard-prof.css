@@ -2,19 +2,21 @@
    DASHBOARD PROF - THÈME DARK MODERNE
    ========================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
 :root {
     /* --- COULEURS GLOBALES --- */
-    --prof-bg: #000000;       /* Fond de la page (Noir profond) */
-    --prof-sidebar: #09090b;  /* Fond de la sidebar (Zinc sombre) */
-    --prof-text: #ffffff;     /* Texte général */
+    --prof-bg: #000000; /* Fond de la page (Noir profond) */
+    --prof-sidebar: #09090b; /* Fond de la sidebar (Zinc sombre) */
+    --prof-text: #ffffff; /* Texte général */
     --prof-text-muted: rgba(255, 255, 255, 0.6);
-    --prof-accent: #C4D056;   /* Vert lime tendance */
+    --prof-accent: #c4d056; /* Vert lime tendance */
 
     /* --- COULEURS DES CARTES (Mode Sombre) --- */
     /* #111217 est la couleur exacte du fond Grafana Dark pour une fusion parfaite */
     --card-bg: #111217;
     --card-text: #ffffff;
-    --card-border: #27272a;   /* Bordure subtile pour détacher la carte du fond noir */
+    --card-border: #27272a; /* Bordure subtile pour détacher la carte du fond noir */
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre diffuse */
 }
 
@@ -26,7 +28,7 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: "Lato", sans-serif;
     background: var(--prof-bg);
     color: var(--prof-text);
 }
@@ -173,7 +175,7 @@ body {
     width: 100%;
     height: 150px; /* Hauteur ajustée pour laisser respirer le chiffre */
     display: flex;
-    align-items: center;     /* Centre verticalement */
+    align-items: center; /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
 
     overflow: hidden;
@@ -211,6 +213,18 @@ body {
     min-height: 200px;
     position: relative;
     overflow: hidden; /* Important pour que l'iframe ne dépasse pas */
+    transition: all 0.3s ease;
+}
+
+/* Style spécifique pour les 3 premières cartes du haut */
+.prof-stats-grid .prof-card {
+    border-radius: 24px;
+    border-bottom: 3px solid #c4d056;
+}
+
+.prof-stats-grid .prof-card:hover {
+    box-shadow: 0 10px 30px rgba(196, 208, 86, 0.25);
+    transform: translateY(-5px);
 }
 
 .large-card {
@@ -232,6 +246,21 @@ body {
     margin-bottom: 20px;
 }
 
+.card-icon-top {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(161, 161, 170, 0.1);
+    border-radius: 12px;
+    color: #a1a1aa;
+    font-size: 20px;
+}
+
 /* =========================================
    PARTIE ANALYSE
    ========================================= */
@@ -239,7 +268,7 @@ body {
 .prof-vertical-grid {
     display: flex;
     flex-direction: column; /* Empilement vertical */
-    gap: 30px;              /* Espace entre chaque carte */
+    gap: 30px; /* Espace entre chaque carte */
     margin-bottom: 50px;
 }
 
@@ -258,8 +287,12 @@ body {
     font-weight: 600;
     margin-left: auto; /* Pousse à droite */
 }
-.trend-up { color: #f87171; } /* Rouge (Hausse de coût = Mauvais) */
-.trend-down { color: #4ade80; } /* Vert (Baisse = Bon) */
+.trend-up {
+    color: #f87171;
+} /* Rouge (Hausse de coût = Mauvais) */
+.trend-down {
+    color: #4ade80;
+} /* Vert (Baisse = Bon) */
 
 /* 2. Les icônes dans des cercles (Haut de page) */
 .icon-circle-box {
@@ -323,9 +356,9 @@ body {
 
 /* Container flexible qui prend tout l'espace restant */
 .chart-container {
-    flex: 1;            /* Prend toute la hauteur disponible */
+    flex: 1; /* Prend toute la hauteur disponible */
     width: 100%;
-    min-height: 0;      /* Évite les bugs de hauteur Flexbox */
+    min-height: 0; /* Évite les bugs de hauteur Flexbox */
     margin-top: 10px;
     position: relative;
     border-radius: 8px;
@@ -389,7 +422,7 @@ body {
         height: auto;
         padding: 20px;
         border-right: none;
-        border-bottom: 1px solid #27272A;
+        border-bottom: 1px solid #27272a;
     }
 
     .prof-main-content {
@@ -401,7 +434,8 @@ body {
         font-size: 32px;
     }
 
-    .prof-stats-grid, .prof-charts-grid {
+    .prof-stats-grid,
+    .prof-charts-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }

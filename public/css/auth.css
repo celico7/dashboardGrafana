@@ -1,4 +1,6 @@
 /* Palette & base */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
 :root {
     --bg: #060b16;
     --card: rgba(13, 20, 35, 0.82);
@@ -20,7 +22,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Lato', sans-serif;
     color: var(--text);
     background: radial-gradient(circle at 20% 20%, rgba(126, 224, 196, 0.12), transparent 26%),
                 radial-gradient(circle at 80% 0%, rgba(126, 224, 196, 0.08), transparent 28%),
@@ -318,7 +320,7 @@ html, body {
 /* Footer crédits */
 .auth-credits {
     text-align: center;
-   
+
 }
 
 .auth-credits p {
