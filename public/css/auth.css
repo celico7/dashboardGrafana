@@ -24,7 +24,7 @@ html, body {
     color: var(--text);
     background: radial-gradient(circle at 20% 20%, rgba(126, 224, 196, 0.12), transparent 26%),
                 radial-gradient(circle at 80% 0%, rgba(126, 224, 196, 0.08), transparent 28%),
-                var(--bg);
+        var(--bg);
 }
 
 /* Layout principal */
