@@ -16,10 +16,8 @@ class AuthController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // Get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // Last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('auth/login.html.twig', [
@@ -122,6 +120,7 @@ class AuthController extends AbstractController
     {
         // This method can be blank - it will be intercepted by the logout key on your firewall
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new \LogicException('Cette méthode peut rester vide - elle sera interceptée par la clé logout de votre firewall.');
     }
 
     #[Route('/forgot-password', name: 'app_forgot_password', methods: ['GET', 'POST'])]
@@ -139,7 +138,7 @@ class AuthController extends AbstractController
 
             if (empty($errors)) {
                 $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
-                
+
                 if ($user) {
                     $token = bin2hex(random_bytes(32));
                     $user->setResetToken($token);
@@ -225,3 +224,4 @@ class AuthController extends AbstractController
         ]);
     }
 }
+
