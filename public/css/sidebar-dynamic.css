@@ -1,6 +1,7 @@
-/* Styles pour la sidebar dynamique - Dashboard Élève */
+/* =========================================
+   SIDEBAR DYNAMIQUE
+   ========================================= */
 
-/* Bouton toggle */
 .sidebar-toggle-btn {
     position: fixed;
     top: 20px;
@@ -40,7 +41,6 @@
     left: 20px;
 }
 
-/* Sidebar transitions */
 .sidebar-dynamic {
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 307px;
@@ -52,7 +52,6 @@
     padding-right: 16px;
 }
 
-/* Masquer le texte en mode collapsed */
 .sidebar-dynamic.collapsed .sidebar-profile .profile-info,
 .sidebar-dynamic.collapsed .menu-item span,
 .sidebar-dynamic.collapsed .prof-sidebar-profile .prof-profile-info,
@@ -65,7 +64,6 @@
     display: none !important;
 }
 
-/* Ajuster les items de menu en mode collapsed */
 .sidebar-dynamic.collapsed .menu-item,
 .sidebar-dynamic.collapsed .prof-menu-item {
     justify-content: center;
@@ -87,13 +85,11 @@
     height: 50px;
 }
 
-/* Centrer les icônes en mode collapsed */
 .sidebar-dynamic.collapsed .menu-icon,
 .sidebar-dynamic.collapsed .prof-menu-icon {
     margin: 0;
 }
 
-/* Transition pour le texte */
 .sidebar-profile .profile-info,
 .menu-item span,
 .prof-sidebar-profile .prof-profile-info,

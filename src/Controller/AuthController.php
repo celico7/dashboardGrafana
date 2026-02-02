@@ -60,7 +60,7 @@ class AuthController extends AbstractController
             if ($password && !preg_match('/[0-9]/', $password)) {
                 $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 chiffre';
             }
-            if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\\\/;~`]/', $password)) {
+            if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\/;~`]/', $password)) {
                 $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 caractère spécial';
             }
 

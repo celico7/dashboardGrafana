@@ -17,16 +17,12 @@ class DashboardController extends AbstractController
     #[Route('/dashboard', name: 'app_dashboard')]
     public function redirectByRole(): Response
     {
-        if ($this->isGranted('ROLE_PROFESSEUR')) {
+        if ($this->isGranted('ROLE_PROFESSEUR') || $this->isGranted('ROLE_GESTIONNAIRE')) {
             return $this->redirectToRoute('app_prof_dashboard');
         }
 
         if ($this->isGranted('ROLE_ETUDIANT')) {
             return $this->redirectToRoute('app_eleve_dashboard');
-        }
-
-        if ($this->isGranted('ROLE_GESTIONNAIRE')) {
-            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         return $this->redirectToRoute('app_login');

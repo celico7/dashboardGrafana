@@ -1,26 +1,21 @@
 /* =========================================
-   DASHBOARD PROF - THÈME DARK MODERNE
+   DASHBOARD PROF 
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 :root {
-    /* --- COULEURS GLOBALES --- */
-    --prof-bg: #000000; /* Fond de la page (Noir profond) */
-    --prof-sidebar: #09090b; /* Fond de la sidebar (Zinc sombre) */
-    --prof-text: #ffffff; /* Texte général */
+    --prof-bg: #000000; 
+    --prof-sidebar: #09090b; 
+    --prof-text: #ffffff; 
     --prof-text-muted: rgba(255, 255, 255, 0.6);
-    --prof-accent: #c4d056; /* Vert lime tendance */
-
-    /* --- COULEURS DES CARTES (Mode Sombre) --- */
-    /* #111217 est la couleur exacte du fond Grafana Dark pour une fusion parfaite */
+    --prof-accent: #c4d056; 
     --card-bg: #111217;
     --card-text: #ffffff;
-    --card-border: #27272a; /* Bordure subtile pour détacher la carte du fond noir */
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre diffuse */
+    --card-border: #27272a; 
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
 }
 
-/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -39,7 +34,7 @@ body {
 }
 
 /* =========================================
-   SIDEBAR (Gauche)
+   SIDEBAR
    ========================================= */
 .prof-sidebar {
     width: 307px;
@@ -69,7 +64,7 @@ body {
     width: 67px;
     height: 67px;
     border-radius: 50%;
-    background: #2a3f4f; /* Couleur de placeholder avatar */
+    background: #2a3f4f;
     flex-shrink: 0;
 }
 
@@ -89,7 +84,7 @@ body {
 .prof-sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacement ajusté */
+    gap: 10px; 
 }
 
 .prof-menu-item {
@@ -125,11 +120,11 @@ body {
 
 .prof-sidebar-bottom .prof-menu-item {
     margin-top: auto;
-    color: #ef4444; /* Rouge pour déconnexion (optionnel) */
+    color: #ef4444;
 }
 
 /* =========================================
-   CONTENU PRINCIPAL (Droite)
+   CONTENU PRINCIPAL
    ========================================= */
 .prof-main-content {
     margin-left: 307px;
@@ -138,7 +133,6 @@ body {
     width: 100%;
 }
 
-/* En-tête de page */
 .prof-page-header {
     margin-bottom: 40px;
 }
@@ -159,10 +153,9 @@ body {
 }
 
 /* =========================================
-   GRILLES (Layout des cartes)
+   GRILLES
    ========================================= */
 
-/* Section 1 : Les 3 chiffres clés du haut */
 .prof-stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -177,19 +170,16 @@ body {
     margin-bottom: 30px;
 }
 
-/* Container pour les "Gros Chiffres" */
 .stat-iframe-container {
     width: 100%;
-    height: 150px; /* Hauteur ajustée pour laisser respirer le chiffre */
+    height: 150px;
     display: flex;
-    align-items: center; /* Centre verticalement */
-    justify-content: center; /* Centre horizontalement */
-
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     position: relative;
 }
 
-/* On s'assure que l'iframe prend toute la place du container flexible */
 .stat-iframe-container iframe {
     width: 100%;
     height: 100%;
@@ -197,33 +187,31 @@ body {
     background: transparent;
 }
 
-/* Section 2 : Les 2 grands graphiques du bas */
 .prof-charts-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes strictes */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-bottom: 53px;
 }
 
 /* =========================================
-   STYLE DES CARTES (Dark Mode)
+   STYLE DES CARTES
    ========================================= */
 .prof-card {
-    background-color: var(--card-bg) !important; /* #111217 */
+    background-color: var(--card-bg) !important;
     color: var(--card-text);
     border: 1px solid var(--card-border);
-    border-radius: 16px; /* Arrondi moderne */
+    border-radius: 16px;
     padding: 24px;
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     min-height: 200px;
     position: relative;
-    overflow: hidden; /* Important pour que l'iframe ne dépasse pas */
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-/* Style spécifique pour les 3 premières cartes du haut */
 .prof-stats-grid .prof-card, .prof-stats-grid-2 .prof-card {
     border-radius: 24px;
     border-bottom: 3px solid #c4d056;
@@ -235,20 +223,20 @@ body {
 }
 
 .large-card {
-    min-height: 450px; /* Hauteur augmentée pour les graphiques */
+    min-height: 450px;
 }
 
 .card-title {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #ffffff; /* Titre blanc */
+    color: #ffffff;
 }
 
 .card-subtitle {
     font-size: 0.9rem;
     font-weight: 400;
-    color: #a1a1aa; /* Gris clair (Zinc-400) lisible sur fond noir */
+    color: #a1a1aa;
     margin-top: -15px;
     margin-bottom: 20px;
 }
@@ -271,18 +259,17 @@ body {
 /* =========================================
    PARTIE ANALYSE
    ========================================= */
-/* --- GRILLE VERTICALE (Pour la page Analyse) --- */
+
 .prof-vertical-grid {
     display: flex;
-    flex-direction: column; /* Empilement vertical */
-    gap: 30px; /* Espace entre chaque carte */
+    flex-direction: column;
+    gap: 30px;
     margin-bottom: 50px;
 }
 
-/* --- Optimisation du remplissage pour la grille verticale (Analyse & Coûts) --- */
 .prof-vertical-grid .chart-container {
     position: relative;
-    flex: 1; /* Force le conteneur à prendre tout l'espace restant dans la carte */
+    flex: 1;
     width: 100%;
 }
 
@@ -293,20 +280,17 @@ body {
 }
 
 /* =========================================
-   CONTAINERS IFRAME / GRAFANA
+   CONTAINERS IFRAME
    ========================================= */
 
-/* Container flexible qui prend tout l'espace restant */
 .chart-container {
-    flex: 1; /* Prend toute la hauteur disponible */
+    flex: 1;
     width: 100%;
     min-height: 0;
     margin-top: 10px;
     border-radius: 8px;
-    /* Pas de background ici pour laisser voir la carte */
 }
 
-/* Iframe Grafana */
 .grafana-iframe {
     width: 100%;
     height: 100%;
@@ -318,19 +302,17 @@ body {
    RESPONSIVE DESIGN
    ========================================= */
 
-/* Écrans moyens (Laptops/Tablettes paysage) */
 @media (max-width: 1400px) {
     .prof-stats-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cartes en haut */
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .prof-charts-grid {
-        grid-template-columns: 1fr; /* Les graphiques passent l'un sous l'autre */
+        grid-template-columns: 1fr;
         gap: 24px;
     }
 }
 
-/* Tablettes portrait */
 @media (max-width: 1200px) {
     .prof-sidebar {
         width: 250px;
@@ -343,7 +325,7 @@ body {
     }
 
     .prof-stats-grid {
-        grid-template-columns: 1fr; /* Tout en 1 colonne */
+        grid-template-columns: 1fr;
     }
 
     .prof-stats-grid-2 {
@@ -351,7 +333,6 @@ body {
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .prof-sidebar {
         width: 100%;
