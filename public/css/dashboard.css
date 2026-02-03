@@ -1,20 +1,20 @@
 /* =========================================
-   DASHBOARD ÉLÈVE 
+   DASHBOARD ÉLÈVE
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 :root {
     /* --- COULEURS GLOBALES --- */
-    --dash-bg: #000000;      
-    --dash-text: #ffffff;     
+    --dash-bg: #000000;
+    --dash-text: #ffffff;
     --dash-text-muted: rgba(255, 255, 255, 0.6);
-    --dash-accent: #C4D056;  
+    --dash-accent: #C4D056;
 
     /* --- COULEURS DES CARTES --- */
-    --card-bg: #111217;      
+    --card-bg: #111217;
     --card-text: #ffffff;
-    --card-border: #27272a;  
+    --card-border: #27272a;
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -38,19 +38,29 @@ body {
     width: 100%;
 }
 
+.profile-avatar {
+    width: 67px;
+    height: 67px;
+    border-radius: 50%;
+    background: #2a3f4f url('../images/icone-gestion.png') no-repeat center center;
+    background-size: cover;
+    border: 2px solid var(--dash-accent);
+    flex-shrink: 0;
+}
+
 /* =========================================
    CONTENU PRINCIPAL
    ========================================= */
 .main-content {
     width: 100%;
-    max-width: 1600px; 
-    margin: 0 auto;    
+    max-width: 1600px;
+    margin: 0 auto;
     padding: 60px 50px;
     position: relative;
 }
 
 /* =========================================
-   BOUTON DÉCONNEXION 
+   BOUTON DÉCONNEXION
    ========================================= */
 .logout-btn {
     position: absolute;
@@ -73,7 +83,7 @@ body {
 
 .logout-btn:hover {
     background: var(--dash-accent);
-    color: #000000; 
+    color: #000000;
     border-color: var(--dash-accent);
     transform: translateY(-2px);
 }
@@ -87,7 +97,7 @@ body {
    ========================================= */
 .page-header {
     margin-bottom: 50px;
-    padding-right: 150px; 
+    padding-right: 150px;
 }
 
 .page-title {
@@ -143,7 +153,7 @@ body {
 
 .stats-grid .modern-card {
     border-radius: 24px;
-    border-bottom: 3px solid #c4d056;
+    border-bottom: 3px solid var(--dash-accent);
 }
 
 .stats-grid .modern-card:hover {

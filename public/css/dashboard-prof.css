@@ -1,19 +1,19 @@
 /* =========================================
-   DASHBOARD PROF 
+   DASHBOARD PROF
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 :root {
-    --prof-bg: #000000; 
-    --prof-sidebar: #09090b; 
-    --prof-text: #ffffff; 
+    --prof-bg: #000000;
+    --prof-sidebar: #09090b;
+    --prof-text: #ffffff;
     --prof-text-muted: rgba(255, 255, 255, 0.6);
-    --prof-accent: #c4d056; 
+    --prof-accent: #c4d056;
     --card-bg: #111217;
     --card-text: #ffffff;
-    --card-border: #27272a; 
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    --card-border: #27272a;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -64,7 +64,9 @@ body {
     width: 67px;
     height: 67px;
     border-radius: 50%;
-    background: #2a3f4f;
+    background: #2a3f4f url('../images/icone-gestion.png') no-repeat center center;
+    background-size: cover;
+    border: 2px solid var(--prof-accent);
     flex-shrink: 0;
 }
 
@@ -84,7 +86,7 @@ body {
 .prof-sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .prof-menu-item {
@@ -214,7 +216,7 @@ body {
 
 .prof-stats-grid .prof-card, .prof-stats-grid-2 .prof-card {
     border-radius: 24px;
-    border-bottom: 3px solid #c4d056;
+    border-bottom: 3px solid var(--prof-accent);
 }
 
 .prof-stats-grid .prof-card:hover, .prof-stats-grid-2 .prof-card:hover {

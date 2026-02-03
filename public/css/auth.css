@@ -117,7 +117,7 @@ body {
     border: 1px solid var(--auth-border);
     border-radius: 12px;
     padding: 14px 16px 14px 48px;
-    color: white;
+    color: var(--auth-text);
     font-size: 15px;
     transition: all 0.2s ease;
 }
@@ -174,7 +174,6 @@ body {
     overflow-y: auto;
 }
 
-/* Barre de défilement personnalisée pour le formulaire */
 .auth-form-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -253,7 +252,6 @@ body {
     }
 }
 
-/* Mode plein écran pour la page d'inscription */
 .auth-full-screen {
     max-width: none;
     padding: 0;

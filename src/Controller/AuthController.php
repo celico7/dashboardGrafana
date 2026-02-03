@@ -39,7 +39,6 @@ class AuthController extends AbstractController
             $passwordConfirm = $request->request->get('password_confirm');
             $role = $request->request->get('role');
 
-            // Validation basique
             $errors = [];
 
             if (!$fullname || strlen($fullname) < 3) {
@@ -50,21 +49,7 @@ class AuthController extends AbstractController
                 $errors['email'] = ['Email invalide'];
             }
 
-            // Validation du mot de passe sécurisé
-            $passwordErrors = [];
-            if (!$password || strlen($password) < 12) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 12 caractères';
-            }
-            if ($password && !preg_match('/[0-9]/', $password)) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 chiffre';
-            }
-            if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\/;~`]/', $password)) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 caractère spécial';
-            }
-
-            if (!empty($passwordErrors)) {
-                $errors['password'] = $passwordErrors;
-            }
+            $this->validatePassword($password, $errors);
 
             if ($password !== $passwordConfirm) {
                 $errors['password_confirm'] = ['Les mots de passe ne correspondent pas'];
@@ -118,8 +103,6 @@ class AuthController extends AbstractController
     #[Route('/logout', name: 'app_logout')]
     public function logout(): Response
     {
-        // This method can be blank - it will be intercepted by the logout key on your firewall
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
         throw new \LogicException('Cette méthode peut rester vide - elle sera interceptée par la clé logout de votre firewall.');
     }
 
@@ -182,20 +165,7 @@ class AuthController extends AbstractController
             $passwordConfirm = $request->request->get('password_confirm');
             $errors = [];
 
-            $passwordErrors = [];
-            if (!$password || strlen($password) < 12) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 12 caractères';
-            }
-            if ($password && !preg_match('/[0-9]/', $password)) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 chiffre';
-            }
-            if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\/;~`]/', $password)) {
-                $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 caractère spécial';
-            }
-
-            if (!empty($passwordErrors)) {
-                $errors['password'] = $passwordErrors;
-            }
+            $this->validatePassword($password, $errors);
 
             if ($password !== $passwordConfirm) {
                 $errors['password_confirm'] = ['Les mots de passe ne correspondent pas'];
@@ -223,5 +193,22 @@ class AuthController extends AbstractController
             'token' => $token,
         ]);
     }
-}
 
+    private function validatePassword(?string $password, array &$errors): void
+    {
+        $passwordErrors = [];
+        if (!$password || strlen($password) < 12) {
+            $passwordErrors[] = 'Le mot de passe doit contenir au moins 12 caractères';
+        }
+        if ($password && !preg_match('/[0-9]/', $password)) {
+            $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 chiffre';
+        }
+        if ($password && !preg_match('/[!@#$%^&*(),.?":{}|<>_\-+=\[\]\/;~`]/', $password)) {
+            $passwordErrors[] = 'Le mot de passe doit contenir au moins 1 caractère spécial';
+        }
+
+        if (!empty($passwordErrors)) {
+            $errors['password'] = $passwordErrors;
+        }
+    }
+}

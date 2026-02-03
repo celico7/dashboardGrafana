@@ -37,10 +37,6 @@
     transition: transform 0.3s ease;
 }
 
-.sidebar-toggle-btn.sidebar-collapsed {
-    left: 20px;
-}
-
 .sidebar-dynamic {
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 307px;
@@ -56,11 +52,6 @@
 .sidebar-dynamic.collapsed .menu-item span,
 .sidebar-dynamic.collapsed .prof-sidebar-profile .prof-profile-info,
 .sidebar-dynamic.collapsed .prof-menu-item span {
-    opacity: 0 !important;
-    width: 0 !important;
-    max-width: 0 !important;
-    overflow: hidden !important;
-    transition: opacity 0.2s ease, width 0.3s ease;
     display: none !important;
 }
 
@@ -94,17 +85,14 @@
 .menu-item span,
 .prof-sidebar-profile .prof-profile-info,
 .prof-menu-item span {
-    transition: opacity 0.3s ease 0.1s, width 0.3s ease;
     white-space: nowrap;
 }
 
-/* Transition pour les items */
 .menu-item,
 .prof-menu-item {
     transition: padding 0.3s ease, gap 0.3s ease;
 }
 
-/* Main content transitions */
 .main-content-dynamic {
     transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -113,12 +101,10 @@
     margin-left: 85px !important;
 }
 
-/* Animation du contenu pour éviter les glitches */
 .main-content-dynamic > * {
     transition: opacity 0.2s ease;
 }
 
-/* Responsive - masquer le bouton sur très petits écrans si nécessaire */
 @media (max-width: 768px) {
     .sidebar-toggle-btn {
         top: 15px;
@@ -133,7 +119,6 @@
     }
 }
 
-/* Effet de focus pour l'accessibilité */
 .sidebar-toggle-btn:focus {
     outline: 2px solid var(--dash-accent);
     outline-offset: 2px;
