@@ -41,13 +41,14 @@
 
             <div class="prof-card">
                 <div class="card-icon-top">
-                    <i class="bi bi-currency-euro"></i>
+                    <i class="bi bi-plug-fill"></i>
                 </div>
-                <h4 class="card-title">a compléter</h4>
-                <h3 class="card-subtitle">a compléter</h3>
+                <h4 class="card-title">Record de Consommation Journalier</h4>
+                <h3 class="card-subtitle">Énergie maximale consommée sur une seule journée <br>
+                    du mois dernier.</h3>
                 <div class="stat-iframe-container">
                     <iframe
-                        src="http://localho-par-defaut?orgId=1&from=1768920676182&to=1769158955799&timezone=browser&var-choix_bat=B%C3%A2timent%20A&panelId=panel-8&__feature.dashboardSceneSolo=true&kiosk">
+                        src="http://localhost:3000/d-solo/ad9plv6/tableau-de-bord-analyse-des-couts?orgId=1&from=1769517096400&to=1770121896400&timezone=browser&var-prix_hp=0.20&panelId=5&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
@@ -55,29 +56,37 @@
 
         <section class="prof-vertical-grid">
             <div class="prof-card large-card">
-                <h3 class="card-title">a compléter</h3>
+                <h3 class="card-title">Répartition de la Consommation Électrique par Salle</h3>
+                <h4 class="card-subtitle">sur le mois précédent</h4>
                 <div class="chart-container">
-                    <iframe class="grafana-iframe" src="http://localho&theme=dark&kiosk">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/ad9plv6/tableau-de-bord-analyse-des-couts?orgId=1&from=1770093830168&to=1770115430168&timezone=browser&var-prix_hp=0.20&panelId=panel-2&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
 
             <div class="prof-card large-card">
-                <h3 class="card-title">a compléter</h3>
+                <h3 class="card-title">Performance Énergétique Comparée par Étage</h3>
+                <h4 class="card-subtitle">Indicateur de densité (kWh/m²) sur le mois précédent. <br>Seuils d'alerte :
+                    Sobriété (<3), Vigilance (3-5), Surconsommation (>5).</h4>
                 <div class="chart-container">
-                    <iframe class="grafana-iframe" src="http://lo/localho-par-defaut?orgId=1&">
+                    <iframe class="grafana-iframe"
+                        src="http://localhost:3000/d-solo/ad9plv6/tableau-de-bord-analyse-des-couts?orgId=1&from=1770095640089&to=1770117240089&timezone=browser&var-prix_hp=0.20&showCategory=Thresholds&tab=queries&panelId=1&__feature.dashboardSceneSolo=true&kiosk">
                     </iframe>
                 </div>
             </div>
 
             <div class="prof-card large-card">
-                <h3 class="card-title">a compléter</h3>
+                <h3 class="card-title">Comparaison de la Consommation d'Activité et du Talon Nocturne</h3>
+                <h4 class="card-subtitle">sur le mois précédent pour réduire les gaspillages hors occupation.</h4>
                 <div class="chart-container">
-                    <iframe class="grafana-iframe" src="http://localhost:30nelId=XX&theme=dark&kiosk">
-                    </iframe>
+                        <iframe class="grafana-iframe"
+                            src="http://localhost:3000/d-solo/ad9plv6/tableau-de-bord-analyse-des-couts?orgId=1&from=1770120513833&to=1770120813833&timezone=browser&var-prix_hp=0.20&tab=queries&panelId=3&__feature.dashboardSceneSolo=true&kiosk">
+                        </iframe>
                 </div>
             </div>
-        </section>
-    </main>
+</div>
+</section>
+</main>
 </div>
 {% endblock %}
