@@ -40,6 +40,9 @@
                         <div class="input-wrapper">
                             <i class="bi bi-lock"></i>
                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="••••••••••••">
+                            <button class="toggle-visibility" type="button" data-target="inputPassword" aria-label="Afficher/masquer le mot de passe">
+                                <i class="bi bi-eye"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -48,6 +51,10 @@
                     <button class="auth-btn" type="submit">
                         Se connecter
                     </button>
+
+                    <div class="forgot-password-link">
+                        <a href="{{ path('app_forgot_password') }}">Mot de passe oublié ?</a>
+                    </div>
 
                     <div class="auth-footer">
                         <p>Pas encore de compte ? <a href="{{ path('app_register') }}">Créer un compte</a></p>
@@ -67,4 +74,66 @@
             </div>
         </div>
     </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="success-toast" id="successToast">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ message }}</span>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.toggle-visibility');
+            
+            toggleButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const target = document.getElementById(targetId);
+                    
+                    if (!target) {
+                        console.error('Target input not found:', targetId);
+                        return;
+                    }
+                    
+                    const currentType = target.getAttribute('type');
+                    const isPassword = currentType === 'password';
+                    
+                    // Change le type de l'input
+                    target.setAttribute('type', isPassword ? 'text' : 'password');
+                    
+                    // Change l'icône
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        if (isPassword) {
+                            icon.className = 'bi bi-eye-slash';
+                        } else {
+                            icon.className = 'bi bi-eye';
+                        }
+                    }
+                });
+            });
+
+        // Animation du toast de succès
+        const successToast = document.getElementById('successToast');
+        if (successToast) {
+            setTimeout(function() {
+                successToast.classList.add('show');
+            }, 100);
+            
+            setTimeout(function() {
+                successToast.classList.remove('show');
+            }, 5000);
+            
+            setTimeout(function() {
+                successToast.remove();
+            }, 5500);
+        }
+    });
+    </script>
 {% endblock %}

@@ -135,25 +135,38 @@
 {% block javascripts %}
     <script>
         // Toggle visibility avec icônes œil ouvert/fermé
-        document.querySelectorAll('.toggle-visibility').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var target = document.getElementById(this.dataset.target);
-                if (!target) return;
-                var isPassword = target.getAttribute('type') === 'password';
-                target.setAttribute('type', isPassword ? 'text' : 'password');
-
-                // Toggle les icônes
-                var eyeOpen = this.querySelector('.eye-open');
-                var eyeClosed = this.querySelector('.eye-closed');
-                if (eyeOpen && eyeClosed) {
-                    if (isPassword) {
-                        eyeOpen.style.display = 'none';
-                        eyeClosed.style.display = 'block';
-                    } else {
-                        eyeOpen.style.display = 'block';
-                        eyeClosed.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.toggle-visibility');
+            
+            toggleButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const target = document.getElementById(targetId);
+                    
+                    if (!target) {
+                        console.error('Target input not found:', targetId);
+                        return;
                     }
-                }
+                    
+                    const currentType = target.getAttribute('type');
+                    const isPassword = currentType === 'password';
+                    
+                    // Change le type de l'input
+                    target.setAttribute('type', isPassword ? 'text' : 'password');
+                    
+                    // Change l'icône
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        if (isPassword) {
+                            icon.className = 'bi bi-eye-slash';
+                        } else {
+                            icon.className = 'bi bi-eye';
+                        }
+                    }
+                });
             });
         });
 
