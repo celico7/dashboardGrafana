@@ -1,6 +1,4 @@
 ###> symfony/framework-bundle ###
-/.env
-/.env.dev
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -12,12 +10,6 @@
 ###> IDE ###
 /.vscode/
 /.idea/
-*.swp
-*.swo
-*~
 ###< IDE ###
 
-node_modules/
 .DS_Store
-.env
-.env.local
